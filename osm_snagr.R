@@ -13,7 +13,7 @@ library("leaflet")
 
 # Now, we'll create our query.
 
-loc <- "Baltimore"
+loc <- "Marrakesh"
 
 q <- getbb(loc) %>%
   opq() %>% # This function builds the Overpass query to be passed to the API
@@ -31,5 +31,9 @@ m <- leaflet(data = d$osm_points) %>%
 m
 
 
-# Exporting the data for use in a GIS
+# Exporting and teast the sf data as a csv
 
+write.csv(d$osm_points, "opd.csv")
+
+tst <- read.csv("opd.csv")
+head(tst)
